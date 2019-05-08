@@ -18,7 +18,7 @@ class MainApp extends Component {
 handleClick = () => {
       // your logic
       this.setState({
-      tapNumber: 1,
+      tapNumber: 1 + this.state.tapNumber,
     });
   };
 
@@ -27,8 +27,24 @@ handleClick = () => {
       <View style={styles.container}>
         <View style={styles.buttonContainer}>
           <Button onPress={this.handleClick} title="Click Me" color="#FFFFFF" accessibilityLabel="Tap on Me" />
-          <Text>Tap Number is {this.state.tapNumber}</Text>
+          <CustomText taps={this.state.tapNumber} />
         </View>
+      </View>
+    );
+  }
+}
+
+class CustomText extends Component {
+
+  constructor(props) {
+    super(props);
+    
+  }
+
+  render() {
+    return (
+      <View>
+          <Text>Tap Number is {this.props.taps}</Text>
       </View>
     );
   }
